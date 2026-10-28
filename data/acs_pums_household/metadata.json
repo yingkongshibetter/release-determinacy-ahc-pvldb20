@@ -1,0 +1,67 @@
+{
+  "name": "acs_pums_household",
+  "source": "U.S. Census Bureau, American Community Survey Public Use Microdata Sample (ACS PUMS), 2023 1-Year",
+  "source_url_pattern": "https://www2.census.gov/programs-surveys/acs/data/pums/2023/1-Year/csv_{p,h}<state>.zip",
+  "states_used": [
+    "ma"
+  ],
+  "year": 2023,
+  "build_timestamp_utc": "2026-05-07T18:05:29.336325+00:00",
+  "label_field": "education_bucket",
+  "filters": {
+    "household_type": "TYPEHUGQ==1 (housing unit; no group quarters)",
+    "min_edge_size": 2,
+    "max_edge_size": 10,
+    "max_persons": 80000,
+    "household_level_sampling_seed": 2026,
+    "feature_excludes_sensitive_attrs": true,
+    "feature_excludes_label_field": true
+  },
+  "sensitive_attrs": [
+    "sex",
+    "age_bucket",
+    "race",
+    "disability"
+  ],
+  "feature_cols_used": [
+    {
+      "name": "ESR",
+      "vocab_size": 6
+    },
+    {
+      "name": "COW",
+      "vocab_size": 10
+    },
+    {
+      "name": "OCCP_super",
+      "vocab_size": 100
+    },
+    {
+      "name": "RELSHIPP",
+      "vocab_size": 17
+    },
+    {
+      "name": "PINCP_decile",
+      "vocab_size": 9
+    }
+  ],
+  "license": "Public domain (U.S. federal government work).",
+  "dataset_name": "acs_pums_household",
+  "node_count": 59452,
+  "hyperedge_count": 20539,
+  "sensitive_attributes": [
+    "sex",
+    "age_bucket",
+    "race",
+    "disability"
+  ],
+  "label_source": "education_bucket",
+  "file_sha256": {
+    "incidence.npz": "9528f8992c63b6d451d4802e525e9466e813a0bf955b175739dfb5091dfff433",
+    "node_features.npz": "f63223cfe4ddb1ca0bd3230511fef2f30d06886d3bdacba102b129ccac798afa",
+    "sensitive_attrs.csv": "6e4cac5b5cf4f0cee70e8b45dd17b353abbea74340ca21796e48caeb9a4ca115",
+    "labels.csv": "5ea04e99ae39aebfbf6a5fa231b588d9ec552698adbc3f06472176b36149e5b7",
+    "node_mapping.csv": "4633ad90477845c25fca4626ef66101d1b9a578f976fbe85341367db4b268988",
+    "hyperedge_mapping.csv": "0ae0b05ecafaeecfce5e3778d84ff8332a4b1691ddcd384a579be02e9b477695"
+  }
+}

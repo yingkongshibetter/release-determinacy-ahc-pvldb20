@@ -1,0 +1,7 @@
+# Code fetched by baselines/fetch_third_party.py is not committed.
+# Only the vendored GRAC Laplacian (MIT) is kept under version control.
+*
+!.gitignore
+!grac_cikm/
+!grac_cikm/LICENSE
+!grac_cikm/Laplacian_HGCN.py

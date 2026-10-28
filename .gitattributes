@@ -1,0 +1,4 @@
+# keep the shipped data byte-identical on every platform
+*.csv -text
+*.npz binary
+*.gz binary

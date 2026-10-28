@@ -1,0 +1,150 @@
+{
+  "dataset_name": "openalex_db",
+  "node_count": 3027,
+  "hyperedge_count": 2823,
+  "volume": 11819,
+  "feature_dim": 386,
+  "node_degree": {
+    "min": 1.0,
+    "mean": 3.9045259332672613,
+    "median": 2.0,
+    "p90": 7.0,
+    "p99": 27.73999999999978,
+    "max": 64.0
+  },
+  "hyperedge_size": {
+    "min": 3.0,
+    "mean": 4.186680835990082,
+    "median": 4.0,
+    "p90": 6.0,
+    "p99": 10.0,
+    "max": 24.0
+  },
+  "sensitive_attributes": {
+    "country": {
+      "value_distribution": {
+        "US": 1191,
+        "CN": 500,
+        "DE": 209,
+        "GB": 181,
+        "SG": 103,
+        "HK": 102,
+        "CA": 91,
+        "CH": 85,
+        "AU": 74,
+        "FR": 66,
+        "IT": 41,
+        "KR": 38,
+        "IL": 37,
+        "DK": 35,
+        "FI": 33,
+        "IN": 33,
+        "GR": 30,
+        "JP": 29,
+        "RU": 21,
+        "NL": 21,
+        "ES": 17,
+        "QA": 10,
+        "BE": 9,
+        "BR": 9,
+        "NO": 8,
+        "SA": 7,
+        "AT": 7,
+        "TW": 5,
+        "MO": 5,
+        "SE": 4,
+        "BD": 3,
+        "NZ": 3,
+        "CL": 3,
+        "MX": 3,
+        "JM": 2,
+        "PT": 2,
+        "NI": 2,
+        "CZ": 2,
+        "PL": 2,
+        "TR": 1,
+        "IE": 1,
+        "IQ": 1,
+        "LT": 1
+      },
+      "missing": 0,
+      "missing_rate": 0.0,
+      "weighted_tv": 0.7144084937343494,
+      "hyperedge_normalized_entropy": 0.11953488593818917,
+      "nmi_with_label": 0.026249176746974304,
+      "feature_predictability": {
+        "available": true,
+        "accuracy_mean": 0.4527818586533111,
+        "accuracy_std": 0.01481660408253257,
+        "macro_f1_mean": 0.22446026422790594,
+        "macro_f1_std": 0.027442793965007664,
+        "samples_used": 2997,
+        "n_classes": 29
+      }
+    },
+    "institution_type": {
+      "value_distribution": {
+        "education": 2127,
+        "company": 686,
+        "facility": 145,
+        "healthcare": 21,
+        "funder": 21,
+        "other": 12,
+        "nonprofit": 9,
+        "government": 5,
+        "archive": 1
+      },
+      "missing": 0,
+      "missing_rate": 0.0,
+      "weighted_tv": 0.3372972351691684,
+      "hyperedge_normalized_entropy": 0.1179930685314201,
+      "nmi_with_label": 0.01815918153620218,
+      "feature_predictability": {
+        "available": true,
+        "accuracy_mean": 0.7167842238769332,
+        "accuracy_std": 0.015623891316790548,
+        "macro_f1_mean": 0.28228597585538895,
+        "macro_f1_std": 0.06919281798183864,
+        "samples_used": 3026,
+        "n_classes": 8
+      }
+    },
+    "career_stage": {
+      "value_distribution": {
+        "early": 1317,
+        "mid": 999,
+        "senior": 711
+      },
+      "missing": 0,
+      "missing_rate": 0.0,
+      "weighted_tv": 0.3984181288783352,
+      "hyperedge_normalized_entropy": 0.544232487143025,
+      "nmi_with_label": 0.01065381008092257,
+      "feature_predictability": {
+        "available": true,
+        "accuracy_mean": 0.5219660147832965,
+        "accuracy_std": 0.019639676997092743,
+        "macro_f1_mean": 0.495820549524616,
+        "macro_f1_std": 0.02285604644187148,
+        "samples_used": 3027,
+        "n_classes": 3
+      }
+    }
+  },
+  "label_distribution": {
+    "Computer Science": 2671,
+    "Decision Sciences": 238,
+    "Physics and Astronomy": 55,
+    "Engineering": 26,
+    "Social Sciences": 15,
+    "Business, Management and Accounting": 7,
+    "Economics, Econometrics and Finance": 4,
+    "Materials Science": 3,
+    "Biochemistry, Genetics and Molecular Biology": 3,
+    "Medicine": 3,
+    "Mathematics": 2
+  },
+  "warnings": [
+    "institution_type: feature predictability accuracy 0.72 > 0.7"
+  ]
+}

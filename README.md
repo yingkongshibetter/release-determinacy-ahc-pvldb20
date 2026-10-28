@@ -4,11 +4,14 @@ This repository provides the implementation of the paper **“Release Determinac
 
 ## Download
 
-Download the complete code and data package from [the release](https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20/releases/tag/pvldb20-submission):
+Click **Code → Download ZIP** above to download the complete source code and bundled data, or clone this repository:
 
-**[release-determinacy-ahc-pvldb20.zip](https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20/releases/download/pvldb20-submission/release-determinacy-ahc-pvldb20.zip)**
+```bash
+git clone https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20.git
+cd release-determinacy-ahc-pvldb20
+```
 
-Extract the archive and run the following commands from its `release-determinacy-ahc/` directory.
+Run the following commands from the repository directory. The [submission snapshot](https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20/releases/tag/pvldb20-submission) is also available as a release package.
 
 ## Requirements
 
@@ -30,7 +33,7 @@ python data/build/build_imdb_cast.py
 python data/check_data.py
 ```
 
-Dataset sources, licenses, and snapshot details are documented in `data/README.md` inside the package.
+Dataset sources, licenses, and snapshot details are documented in `data/README.md` in this repository.
 
 ## Run a fairness audit
 
@@ -63,5 +66,4 @@ Results are saved to `outputs/`. See [the full reproducibility guide](REPRODUCIB
 
 - The package includes stored clustering partitions and search witnesses. Rerunning the clustering methods and searches is documented in `baselines/README.md` and the full reproducibility guide.
 - IMDb data change over time. The paper used the 2026-05-07 snapshot; a fresh download may produce different counts.
-- The complete implementation is in the attached release package. GitHub's **Code → Download ZIP** contains the repository documentation.
 - The code is released under the [MIT License](LICENSE). Dataset licenses are documented separately.

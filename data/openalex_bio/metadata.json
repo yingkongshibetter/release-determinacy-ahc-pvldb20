@@ -1,0 +1,68 @@
+{
+  "dataset_name": "openalex_bio",
+  "raw_data_sources": [
+    {
+      "name": "OpenAlex Works (Biology concept filter)",
+      "url": "https://api.openalex.org/works",
+      "filter": "concepts.id:C95444343",
+      "filter_field": "concepts.id",
+      "concept_ids": [
+        "C95444343"
+      ],
+      "concept_names": [
+        "Biology"
+      ]
+    }
+  ],
+  "construction_date": "2026-05-06T04:20:27.045965+00:00",
+  "random_seed": 2026,
+  "node_count": 3764,
+  "hyperedge_count": 1799,
+  "volume": 9279,
+  "feature_dim": 612,
+  "sensitive_attributes": [
+    "country",
+    "institution_type",
+    "career_stage"
+  ],
+  "label_source": "OpenAlex primary_topic.field.display_name",
+  "hyperedge_rule": "one hyperedge per OpenAlex work; members are its authors",
+  "filters": {
+    "min_size": 3,
+    "max_size": 50,
+    "min_author_works": 2,
+    "drop_authors_missing_country": true,
+    "drop_authors_missing_inst_type": true,
+    "feature_excludes_sensitive_attrs": true,
+    "feature_excludes_label": true,
+    "filter_field": "concepts.id",
+    "concept_ids": [
+      "C95444343"
+    ],
+    "concept_names": [
+      "Biology"
+    ]
+  },
+  "min_hyperedge_size": 3,
+  "max_hyperedge_size": 50,
+  "removed_node_count": 19997,
+  "removed_hyperedge_count": 2184,
+  "file_sha256": {
+    "incidence.npz": "e0924539c4173f19907f560c9dadff918f48a19884eb5226ccb55736bdc7c460",
+    "node_features.npz": "3040f6434610b68aa7186939b3f3796c3836cdc88706d9577c87091c691e720f",
+    "sensitive_attrs.csv": "5c6433dee0455b9eb51354e2be79356edbbe1b200dd86b845b300531b3a95aaf",
+    "labels.csv": "74bd3926db6cf08746fe3701f16112f35e3643ce9954f71417b8d660b9bdb06c",
+    "node_mapping.csv": "9e30d3ef66134ef5c96544b346ab7586db29b40a8f89e4d8bfa5065bf2bbf987",
+    "hyperedge_mapping.csv": "b5aaf73584abe3af843ce3fd0cec82fd6d0a6e808d828cdc7a91300dd868d862"
+  },
+  "code_version": null,
+  "known_limitations": [
+    "career_stage is observed-earliest-publication-year; not true first publication.",
+    "country and institution_type are most-frequent affiliations across this author's works in the cache.",
+    "Authors with missing country or institution type are dropped; this biases the surviving population.",
+    "OpenAlex coverage of DB venues is incomplete prior to ~2010."
+  ],
+  "openalex_works_seen": 6000,
+  "openalex_works_kept_after_size_filter": 3983,
+  "topic_feature_dim": 612
+}

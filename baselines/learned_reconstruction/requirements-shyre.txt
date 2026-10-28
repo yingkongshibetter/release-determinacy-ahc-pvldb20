@@ -1,0 +1,9 @@
+# Separate environment for run_shyre.py (CPython 3.11.9). The SHyRe code uses
+# np.float and np.int, so numpy must be older than 1.24.
+numpy==1.23.5
+scipy==1.10.1
+scikit-learn==1.2.2
+networkx==2.8.8
+tqdm==4.70.1
+# optional, only for the peak-memory figure in the run records
+psutil==7.2.2

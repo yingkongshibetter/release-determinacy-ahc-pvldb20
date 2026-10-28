@@ -1,0 +1,62 @@
+{
+  "dataset_name": "openalex_db",
+  "raw_data_sources": [
+    {
+      "name": "OpenAlex Works (DB-venue filter)",
+      "url": "https://api.openalex.org/works",
+      "filter": "primary_location.source.id in {SIGMOD,VLDB,ICDE,PODS}",
+      "source_ids_used": [
+        "S4306419648",
+        "S4210226185",
+        "S4306420993",
+        "S4306418077",
+        "S4363608845",
+        "S4210210321"
+      ]
+    }
+  ],
+  "construction_date": "2026-05-06T03:22:47.017595+00:00",
+  "random_seed": 2026,
+  "node_count": 3027,
+  "hyperedge_count": 2823,
+  "volume": 11819,
+  "feature_dim": 386,
+  "sensitive_attributes": [
+    "country",
+    "institution_type",
+    "career_stage"
+  ],
+  "label_source": "OpenAlex primary_topic.field.display_name",
+  "hyperedge_rule": "one hyperedge per OpenAlex work; members are its authors",
+  "filters": {
+    "min_size": 3,
+    "max_size": 50,
+    "min_author_works": 2,
+    "drop_authors_missing_country": true,
+    "drop_authors_missing_inst_type": true,
+    "feature_excludes_sensitive_attrs": true,
+    "feature_excludes_label": true
+  },
+  "min_hyperedge_size": 3,
+  "max_hyperedge_size": 50,
+  "removed_node_count": 8871,
+  "removed_hyperedge_count": 1640,
+  "file_sha256": {
+    "incidence.npz": "f9da4bc569fe7ef643033fdd7ea1354cd6f395a27e6b10d83fed1bff95e59dd5",
+    "node_features.npz": "a35c6d337ae9567e9fa0d8b28422fd963218b510cce95dc09663bffd2d4a0040",
+    "sensitive_attrs.csv": "3ac9ca174efd67c7ca480ddcd57633b9192aa791bba2cc4d4fa488388c8c0deb",
+    "labels.csv": "4127dfc16778d134d97c53c37d89ee6f9df4dd8236d31eb1cc5dee893c0d984f",
+    "node_mapping.csv": "5153824e11ad1f2c6bf76029352d524e96de8bbaa7e6ac09da04522e7affdd49",
+    "hyperedge_mapping.csv": "45c1e17e80de366c99f5c2483c8ed71a5c5ea672cf980b7232d80d6cd6891dd9"
+  },
+  "code_version": null,
+  "known_limitations": [
+    "career_stage is observed-earliest-publication-year; not true first publication.",
+    "country and institution_type are most-frequent affiliations across this author's works in the cache.",
+    "Authors with missing country or institution type are dropped; this biases the surviving population.",
+    "OpenAlex coverage of DB venues is incomplete prior to ~2010."
+  ],
+  "openalex_works_seen": 6035,
+  "openalex_works_kept_after_size_filter": 4463,
+  "topic_feature_dim": 386
+}

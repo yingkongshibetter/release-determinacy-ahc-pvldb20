@@ -1,0 +1,12 @@
+outputs/
+data/raw/
+__pycache__/
+*.pyc
+*.duckdb
+*.duckdb.wal
+.pytest_cache/
+# datasets that must be built locally (licences forbid redistribution)
+data/movielens_1m/
+data/pokec_hobby/
+data/imdb_cast/
+data/imdb_cast_full/

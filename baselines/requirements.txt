@@ -1,0 +1,14 @@
+# Environment that produced the audited partitions (CPython 3.14.3, Windows, CPU only).
+numpy==2.4.2
+scipy==1.17.1
+pandas==2.3.3
+scikit-learn==1.8.0
+# AHRC (Louvain)
+python-igraph==1.0.0
+# CAHC. CPU wheels: torch from https://download.pytorch.org/whl/cpu,
+# torch-scatter and torch-sparse from https://data.pyg.org/whl/torch-2.11.0+cpu.html
+torch==2.11.0
+torch-scatter==2.1.2
+torch-sparse==0.6.18
+torch-geometric==2.7.0
+tqdm==4.67.3

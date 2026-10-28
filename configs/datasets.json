@@ -1,0 +1,497 @@
+{
+  "about": "Datasets of 'Release Determinacy for Fairness Certification in Attributed Hypergraph Clustering' (Table 3). sha256 values are those of the processed files used in the paper. content_sha256 hashes the decompressed arrays of an npz file; sha256_lf hashes a CSV after converting CRLF to LF. Checked by data/check_data.py.",
+  "random_seed": 2026,
+  "datasets": {
+    "movielens_1m": {
+      "paper_name": "ML-1M",
+      "folder": "data/movielens_1m",
+      "unit": "users who rated one film >= 4 stars in one calendar month",
+      "attributes": [
+        "gender",
+        "age_bucket"
+      ],
+      "label_column": "label",
+      "label": "dominant film genre (index into feature_genres)",
+      "unit_size_range": [
+        3,
+        50
+      ],
+      "expected": {
+        "nodes": 5891,
+        "units": 20271,
+        "memberships": 236154
+      },
+      "observed_unit_size": {
+        "min": 3,
+        "max": 50
+      },
+      "shipped": false,
+      "in_table3": true,
+      "download": "python data/download.py --dataset movielens_1m",
+      "build": "python data/build/build_movielens_1m.py",
+      "sources": [
+        {
+          "name": "MovieLens-1M",
+          "url": "https://files.grouplens.org/datasets/movielens/ml-1m.zip",
+          "sha256": "a6898adb50b9ca05aa231689da44c217cb524e7ebd39d264c56e2832f2c54e20"
+        }
+      ],
+      "licence": "GroupLens MovieLens usage licence: research use, no redistribution without permission, no commercial use; cite Harper and Konstan (2015).",
+      "files": {
+        "incidence.npz": {
+          "sha256": "3cc86db359d5f72125c2fbb939ef7a1de62cb47fab9470cf8ee6a47e36020323",
+          "bytes": 444273,
+          "content_sha256": "b23046967efc27754e51ff01ea9054118f313aa10470c1473eb0b14ee4721d2b"
+        },
+        "node_features.npz": {
+          "sha256": "1e67e9d642971fa1f0247c96bd4320afbd7358c67ce26222bb09cf52fe43d1fc",
+          "bytes": 313782,
+          "content_sha256": "12bd54d242259da59a8ebde51e3ffc697ad7783c3d181ed4a4fdf4f59a758e2e"
+        },
+        "sensitive_attrs.csv": {
+          "sha256": "ebac1b2a73c61a0d3571486f82e68f2e99f7c744c4636991a42c1bf0d9f49863",
+          "bytes": 75414,
+          "sha256_lf": "ebac1b2a73c61a0d3571486f82e68f2e99f7c744c4636991a42c1bf0d9f49863"
+        },
+        "labels.csv": {
+          "sha256": "16107046788a74c44fe3f736ba48a80a38793fc2b90228e5e0099d842e54fffc",
+          "bytes": 46818,
+          "sha256_lf": "c6ba4a1082e60c6fb2679c6e177ec18329d2688b83244a00cf9513850f027558"
+        },
+        "node_mapping.csv": {
+          "sha256": "0c97bd0e6c5438f57a17b5947b980dd1f4bbbc3248d4cd608ed154e01d102711",
+          "bytes": 56740,
+          "sha256_lf": "0c97bd0e6c5438f57a17b5947b980dd1f4bbbc3248d4cd608ed154e01d102711"
+        },
+        "hyperedge_mapping.csv": {
+          "sha256": "d8c14fc5e481e91b614cd562aaa6bbc4426d881a9e1d610f401ca1a0f866af0d",
+          "bytes": 1276381,
+          "sha256_lf": "d8c14fc5e481e91b614cd562aaa6bbc4426d881a9e1d610f401ca1a0f866af0d"
+        }
+      }
+    },
+    "openalex_db": {
+      "paper_name": "OA-DB",
+      "folder": "data/openalex_db",
+      "unit": "authors of one SIGMOD/VLDB/ICDE/PODS work",
+      "attributes": [
+        "country",
+        "institution_type",
+        "career_stage"
+      ],
+      "label_column": "label",
+      "label": "primary-topic field",
+      "unit_size_range": [
+        3,
+        50
+      ],
+      "expected": {
+        "nodes": 3027,
+        "units": 2823,
+        "memberships": 11819
+      },
+      "observed_unit_size": {
+        "min": 3,
+        "max": 24
+      },
+      "shipped": true,
+      "in_table3": true,
+      "download": "python data/download.py --dataset openalex_db",
+      "build": "python data/build/build_openalex_db.py",
+      "sources": [
+        {
+          "name": "OpenAlex works API",
+          "url": "https://api.openalex.org/works",
+          "query": "filter=primary_location.source.id:S4306419648|S4210226185|S4306420993|S4306418077|S4363608845|S4210210321",
+          "snapshot": "May 2026, 6,035 works"
+        }
+      ],
+      "licence": "CC0 1.0 (OpenAlex).",
+      "files": {
+        "incidence.npz": {
+          "sha256": "f9da4bc569fe7ef643033fdd7ea1354cd6f395a27e6b10d83fed1bff95e59dd5",
+          "bytes": 25344,
+          "content_sha256": "1be3ee7f1580ce4b0826e35bae7b04421bf28309c42992c5b66309da58aab57c"
+        },
+        "node_features.npz": {
+          "sha256": "a35c6d337ae9567e9fa0d8b28422fd963218b510cce95dc09663bffd2d4a0040",
+          "bytes": 45927,
+          "content_sha256": "c3de56292591842bf7b1f49efe95718ba38f0eca7fe835c14b23a0384213b191"
+        },
+        "sensitive_attrs.csv": {
+          "sha256": "3ac9ca174efd67c7ca480ddcd57633b9192aa791bba2cc4d4fa488388c8c0deb",
+          "bytes": 68693,
+          "sha256_lf": "3ac9ca174efd67c7ca480ddcd57633b9192aa791bba2cc4d4fa488388c8c0deb"
+        },
+        "labels.csv": {
+          "sha256": "4127dfc16778d134d97c53c37d89ee6f9df4dd8236d31eb1cc5dee893c0d984f",
+          "bytes": 66156,
+          "sha256_lf": "4127dfc16778d134d97c53c37d89ee6f9df4dd8236d31eb1cc5dee893c0d984f"
+        },
+        "node_mapping.csv": {
+          "sha256": "5153824e11ad1f2c6bf76029352d524e96de8bbaa7e6ac09da04522e7affdd49",
+          "bytes": 113936,
+          "sha256_lf": "5153824e11ad1f2c6bf76029352d524e96de8bbaa7e6ac09da04522e7affdd49"
+        },
+        "hyperedge_mapping.csv": {
+          "sha256": "45c1e17e80de366c99f5c2483c8ed71a5c5ea672cf980b7232d80d6cd6891dd9",
+          "bytes": 247587,
+          "sha256_lf": "45c1e17e80de366c99f5c2483c8ed71a5c5ea672cf980b7232d80d6cd6891dd9"
+        }
+      }
+    },
+    "openalex_cs_size3plus": {
+      "paper_name": "OA-CS-3+",
+      "folder": "data/openalex_cs_size3plus",
+      "unit": "authors of one computer-science work, 2018-2024",
+      "attributes": [
+        "country",
+        "institution_type",
+        "career_stage"
+      ],
+      "label_column": "label",
+      "label": "primary-topic field",
+      "unit_size_range": [
+        3,
+        25
+      ],
+      "expected": {
+        "nodes": 24286,
+        "units": 8219,
+        "memberships": 44525
+      },
+      "observed_unit_size": {
+        "min": 3,
+        "max": 25
+      },
+      "shipped": true,
+      "in_table3": true,
+      "download": "python data/download.py --dataset openalex_cs_size3plus",
+      "build": "python data/build/build_openalex_cs_size3plus.py",
+      "sources": [
+        {
+          "name": "OpenAlex works API",
+          "url": "https://api.openalex.org/works",
+          "query": "filter=concepts.id:C41008148,publication_year:2018-2024 (first 30,000 works returned)",
+          "snapshot": "May 2026"
+        }
+      ],
+      "licence": "CC0 1.0 (OpenAlex).",
+      "files": {
+        "incidence.npz": {
+          "sha256": "04413ef1c76e4a0e26efbb41be3c794c8c182c6b4f46f5d1c725045044bf118a",
+          "bytes": 116893,
+          "content_sha256": "67e985db3a92fac0eafbe796b21fd51995993267f361fea0a16529d5071989ea"
+        },
+        "node_features.npz": {
+          "sha256": "0227d3e0de885bcf38ea969e92b52744f5481133040fac1d9c63ca4c0425e610",
+          "bytes": 241051,
+          "content_sha256": "384328c8aeb83c06e7d996a703c8b994b7ff641c93919cc9c2ed0ac9d6582ba7"
+        },
+        "sensitive_attrs.csv": {
+          "sha256": "910420d5f5a362aa79cb4f69c11fc28fb807f6737383a09b79143f65a4635db0",
+          "bytes": 592424,
+          "sha256_lf": "910420d5f5a362aa79cb4f69c11fc28fb807f6737383a09b79143f65a4635db0"
+        },
+        "labels.csv": {
+          "sha256": "11feb64c2267987df6814e04937301987958400367c8c7900d0eb76f0c2a0037",
+          "bytes": 627360,
+          "sha256_lf": "11feb64c2267987df6814e04937301987958400367c8c7900d0eb76f0c2a0037"
+        },
+        "node_mapping.csv": {
+          "sha256": "e26ea3791975a98cc4ac476ac0d22d1541498e55becbe60eb0ec8d8141f253f3",
+          "bytes": 426058,
+          "sha256_lf": "e26ea3791975a98cc4ac476ac0d22d1541498e55becbe60eb0ec8d8141f253f3"
+        },
+        "hyperedge_mapping.csv": {
+          "sha256": "21584e972f2d554398cb9fe93c4f7dd928fe19e13c68f2da96f1027620b6873c",
+          "bytes": 567598,
+          "sha256_lf": "21584e972f2d554398cb9fe93c4f7dd928fe19e13c68f2da96f1027620b6873c"
+        }
+      }
+    },
+    "pokec_hobby": {
+      "paper_name": "Pokec",
+      "folder": "data/pokec_hobby",
+      "unit": "users sharing one normalised hobby token",
+      "attributes": [
+        "gender",
+        "AGE",
+        "region_kraj"
+      ],
+      "label_column": "label",
+      "label": "education level",
+      "unit_size_range": [
+        3,
+        50
+      ],
+      "expected": {
+        "nodes": 70144,
+        "units": 21486,
+        "memberships": 170189
+      },
+      "observed_unit_size": {
+        "min": 3,
+        "max": 50
+      },
+      "shipped": false,
+      "in_table3": true,
+      "download": "python data/download.py --dataset pokec_hobby",
+      "build": "python data/build/build_pokec_hobby.py",
+      "sources": [
+        {
+          "name": "SNAP soc-Pokec profiles",
+          "url": "https://snap.stanford.edu/data/soc-pokec-profiles.txt.gz",
+          "page": "https://snap.stanford.edu/data/soc-Pokec.html"
+        }
+      ],
+      "licence": "SNAP dataset; free for research use with citation of Takac and Zabovsky (2012); not redistributed here.",
+      "files": {
+        "incidence.npz": {
+          "sha256": "8bff54fd64b201a9e1893e864b320aa23c4d15bc0fb34fbebbb188c660746b3b",
+          "bytes": 437851,
+          "content_sha256": "8aaad8e6f476182cdcd98a9d5d106abcb06119e473220de98cba8ddb81be3ee8"
+        },
+        "node_features.npz": {
+          "sha256": "807c166971c96416d5fec86cd2348c8ac1cf032c9fe93e87c3cc28895e30e760",
+          "bytes": 1774431,
+          "content_sha256": "27829c6da53c3c7aaa095240fe0b81f423bc0f337a166db4e8f62b9431a2eef7"
+        },
+        "sensitive_attrs.csv": {
+          "sha256": "55fa768ac024ae281ecf0215116ca1bb65f9e89589052bedd2f066f61ebcf10a",
+          "bytes": 4164792,
+          "sha256_lf": "55fa768ac024ae281ecf0215116ca1bb65f9e89589052bedd2f066f61ebcf10a"
+        },
+        "labels.csv": {
+          "sha256": "6a2de903b8e4d40107364b9a52b23917f53fae86b030d9d512a2a2a1f20ff6de",
+          "bytes": 1350402,
+          "sha256_lf": "266e88fed6c4d9533a9d20104a148e1afc6324ff207fcf5cde8e8d1580965a41"
+        },
+        "node_mapping.csv": {
+          "sha256": "419f8f81e9a58484e536c5bbe6a2472e639be2b69b253fc912696bb62c7eac76",
+          "bytes": 861257,
+          "sha256_lf": "419f8f81e9a58484e536c5bbe6a2472e639be2b69b253fc912696bb62c7eac76"
+        },
+        "hyperedge_mapping.csv": {
+          "sha256": "4fb223e47a528811b7c0d329c2653c70a909e884af6b8c0ee5b7c4a9d50e088e",
+          "bytes": 2539544,
+          "sha256_lf": "4fb223e47a528811b7c0d329c2653c70a909e884af6b8c0ee5b7c4a9d50e088e"
+        }
+      }
+    },
+    "imdb_cast": {
+      "paper_name": "IMDb-Cast",
+      "folder": "data/imdb_cast",
+      "unit": "principal cast of one non-adult feature film, 1990-2025, among the top 80,000 actors",
+      "attributes": [
+        "birth_cohort",
+        "career_stage"
+      ],
+      "label_column": "label",
+      "label": "dominant film genre",
+      "unit_size_range": [
+        3,
+        50
+      ],
+      "expected": {
+        "nodes": 80000,
+        "units": 154159,
+        "memberships": 918945
+      },
+      "observed_unit_size": {
+        "min": 3,
+        "max": 10
+      },
+      "shipped": false,
+      "in_table3": true,
+      "download": "python data/download.py --dataset imdb_cast",
+      "build": "python data/build/build_imdb_cast.py",
+      "sources": [
+        {
+          "name": "IMDb non-commercial datasets",
+          "url": "https://datasets.imdbws.com/",
+          "files": [
+            "title.basics.tsv.gz",
+            "title.principals.tsv.gz",
+            "name.basics.tsv.gz"
+          ],
+          "snapshot": "2026-05-07"
+        }
+      ],
+      "licence": "IMDb non-commercial datasets: personal and non-commercial use only; no redistribution.",
+      "files": {
+        "incidence.npz": {
+          "sha256": "866958d6039dc98a2320bd834f836af6d72861a9a43c75db529f379dd31a133e",
+          "bytes": 2677706,
+          "content_sha256": "75373ff555502cd6b9e79c61b9b561f6230c90755d2e85e98588bc426f87b124"
+        },
+        "node_features.npz": {
+          "sha256": "cc53cd42d63a4bc4d6ba03daa2c3874ed91bdc890959b19814a830bacd866398",
+          "bytes": 1433644,
+          "content_sha256": "0ed6375124a3f59cd503313e46a8dcd4f865f5598cce921448623c716288d939"
+        },
+        "sensitive_attrs.csv": {
+          "sha256": "597878ae5fa96bc28f41067b433a5e44e19ee38e22b0b133d5805573fabb9973",
+          "bytes": 1771213,
+          "sha256_lf": "5b020f109dc5a94b6551835023df6640572505170b12a4397ae1851f74a6b626"
+        },
+        "labels.csv": {
+          "sha256": "e154277bdb865a857fef730c071335fccb23967fe71ecb066703735f66912a20",
+          "bytes": 1079695,
+          "sha256_lf": "f4292ba1434f9c817d09c61cd4c02d7d63920dafcff284df75020024343de1dd"
+        },
+        "node_mapping.csv": {
+          "sha256": "45e809a73d933c5b563a3079c27c8ddb5c1ef9cf3f8d30f3cfe068d29dde3d87",
+          "bytes": 1354628,
+          "sha256_lf": "8ae90794b549758936a423743934dfed8cedd194d5fdef8a7f644ae0179c3b77"
+        },
+        "hyperedge_mapping.csv": {
+          "sha256": "12984a4344a48de557a72176dd6eacfd5aaf1edfa51bc08daf22d71f0797eba2",
+          "bytes": 5551418,
+          "sha256_lf": "8ef195af635091b1357b9400c9c812cb27840e832e56fec69682aefc3baa1670"
+        }
+      }
+    },
+    "acs_pums_household": {
+      "paper_name": "ACS-PUMS-HH",
+      "folder": "data/acs_pums_household",
+      "unit": "one household (ACS PUMS 2023 1-year, Massachusetts)",
+      "attributes": [
+        "sex",
+        "age_bucket",
+        "race",
+        "disability"
+      ],
+      "label_column": "label",
+      "label": "education level",
+      "unit_size_range": [
+        2,
+        10
+      ],
+      "expected": {
+        "nodes": 59452,
+        "units": 20539,
+        "memberships": 59452
+      },
+      "observed_unit_size": {
+        "min": 2,
+        "max": 10
+      },
+      "shipped": true,
+      "in_table3": true,
+      "download": "python data/download.py --dataset acs_pums_household",
+      "build": "python data/build/build_acs_pums_household.py",
+      "sources": [
+        {
+          "name": "ACS PUMS 2023 1-year, Massachusetts",
+          "url": "https://www2.census.gov/programs-surveys/acs/data/pums/2023/1-Year/",
+          "files": {
+            "csv_pma.zip": "0e50dbb808f383b340d11ee55ef0271f9e6739d3410f50b7c7329c87e1b71654",
+            "csv_hma.zip": "0c6e9324c91fe632984cef981b9bcf9fc11200ec4fd8da54d3fec083daf07660"
+          }
+        }
+      ],
+      "licence": "Public domain (U.S. federal government work, U.S. Census Bureau).",
+      "files": {
+        "incidence.npz": {
+          "sha256": "9528f8992c63b6d451d4802e525e9466e813a0bf955b175739dfb5091dfff433",
+          "bytes": 181334,
+          "content_sha256": "3f7bbd5143ce0abb90dc4e2257dbe2f7cfb8476b784a8e3bd259d1d861828abb"
+        },
+        "node_features.npz": {
+          "sha256": "f63223cfe4ddb1ca0bd3230511fef2f30d06886d3bdacba102b129ccac798afa",
+          "bytes": 320649,
+          "content_sha256": "f78226af9c179f03b955277a37fa5e5ac0cd5ed2040dfb16bbc4319c034f5b62"
+        },
+        "sensitive_attrs.csv": {
+          "sha256": "6e4cac5b5cf4f0cee70e8b45dd17b353abbea74340ca21796e48caeb9a4ca115",
+          "bytes": 1625945,
+          "sha256_lf": "537946cb73be777617a64df12a9831976ace36b794a5c4372a6d9eb8e2f3855c"
+        },
+        "labels.csv": {
+          "sha256": "5ea04e99ae39aebfbf6a5fa231b588d9ec552698adbc3f06472176b36149e5b7",
+          "bytes": 1051922,
+          "sha256_lf": "ddbd13e9410518e39f60a868e09b096128043fda8f3f8afc54abb179f6ab980d"
+        },
+        "node_mapping.csv": {
+          "sha256": "4633ad90477845c25fca4626ef66101d1b9a578f976fbe85341367db4b268988",
+          "bytes": 1534681,
+          "sha256_lf": "c0c1836f0d571dfa431e6108d1baca375244d689932e3f38f1d5cd70af5483c4"
+        },
+        "hyperedge_mapping.csv": {
+          "sha256": "0ae0b05ecafaeecfce5e3778d84ff8332a4b1691ddcd384a579be02e9b477695",
+          "bytes": 481860,
+          "sha256_lf": "02d68c3c87826622207d2b48676332ca99094e5a3b8f78c5e339446721d429d0"
+        }
+      }
+    },
+    "imdb_cast_full": {
+      "paper_name": "IMDb-Cast (full)",
+      "folder": "data/imdb_cast_full",
+      "unit": "principal cast of one film, TV film or TV series with >= 3 actor/actress credits (DuckDB scale-up only; an actor credited twice counts twice, so 4,258 units have 1 or 2 distinct members)",
+      "attributes": [
+        "gender",
+        "birth_cohort"
+      ],
+      "label_column": "label",
+      "label": "dominant primary genre",
+      "unit_size_range": [
+        1,
+        10
+      ],
+      "expected": {
+        "nodes": 1677272,
+        "units": 686238,
+        "memberships": 5698394
+      },
+      "observed_unit_size": {
+        "min": 1,
+        "max": 10
+      },
+      "shipped": false,
+      "in_table3": false,
+      "download": "python data/download.py --dataset imdb_cast_full",
+      "build": "python data/build/build_imdb_cast_full.py",
+      "sources": [
+        {
+          "name": "IMDb non-commercial datasets",
+          "url": "https://datasets.imdbws.com/",
+          "files": [
+            "title.basics.tsv.gz",
+            "title.principals.tsv.gz",
+            "name.basics.tsv.gz"
+          ],
+          "snapshot": "2026-05-07"
+        }
+      ],
+      "licence": "IMDb non-commercial datasets: personal and non-commercial use only; no redistribution.",
+      "files": {
+        "incidence.npz": {
+          "sha256": "02a275f75d41b40a2c35e451266970ec9b05539fea512a0bf00512597fa28df3",
+          "bytes": 18729776,
+          "content_sha256": "25613453c1d538f3f8ce4ee74a861ffbf56111def8e108442c613de7b82ffbb7"
+        },
+        "sensitive_attrs.csv": {
+          "sha256": "0bae2cb81106886f9e505dfdd235a2f96ac6dae4122c3a367d81d9400c5e08fa",
+          "bytes": 37233878,
+          "sha256_lf": "b73beb298ad031b445c5bfd9f209e5d9d5b40e26d1f63476c36001f32701cfe1"
+        },
+        "labels.csv": {
+          "sha256": "b50e29c36490bff97e0294797e388627433ce22037cc5a75d3dc3fa3ae0a6855",
+          "bytes": 26045413,
+          "sha256_lf": "7983a37f902408530b1b0b6bd198a3bfa06e1a302f01c984da98c774524555a7"
+        },
+        "node_mapping.csv": {
+          "sha256": "aca57e07aee6df1a0e7250f697cac1e104aaf44ef9d71982136553c7a36cf7aa",
+          "bytes": 31252806,
+          "sha256_lf": "425d8287389326928488569049c9bbfb6c1f38d001dbae6f2c11267b5682e719"
+        },
+        "hyperedge_mapping.csv": {
+          "sha256": "3471a9386a5628395624ea18606e3875a1289b083f5574d5ce1e0f4db3fe5d06",
+          "bytes": 12443918,
+          "sha256_lf": "1a127cc4019a64d33e8133dad2beb9b96f7602f1f917344377f5ae28085ae637"
+        }
+      }
+    }
+  }
+}

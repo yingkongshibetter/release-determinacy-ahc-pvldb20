@@ -1,0 +1,35 @@
+{
+  "n_nodes": 59452,
+  "n_edges": 20539,
+  "nnz": 59452,
+  "edge_size_min": 2,
+  "edge_size_max": 10,
+  "edge_size_mean": 2.8945908546447754,
+  "node_degree_min": 1,
+  "node_degree_max": 1,
+  "node_degree_mean": 1.0,
+  "feat_dim": 142,
+  "label_field": "education_bucket",
+  "label_n_unique": 9,
+  "label_top5": {
+    "bachelors": 12833,
+    "hs_grad_or_ged": 10248,
+    "lt_hs": 9598,
+    "masters": 7792,
+    "some_college": 6554
+  },
+  "sensitive_field_unique": {
+    "sex": 2,
+    "age_bucket": 5,
+    "race": 7,
+    "disability": 2
+  },
+  "states": [
+    "ma"
+  ],
+  "year": 2023,
+  "sampled": false,
+  "sample_size_persons": null,
+  "max_persons_arg": 80000,
+  "seed": 2026
+}

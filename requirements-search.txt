@@ -1,0 +1,8 @@
+# Optional: the same-group exchange search (run_search.py exchange) needs numba. It ran with CPython 3.14.3,
+# which also bundles the SQLite 3.50.4 used for the relational prototype times.
+numpy==2.4.2
+scipy==1.17.1
+pandas==2.3.3
+networkx==3.6.1
+psutil==7.2.2
+numba==0.64.0

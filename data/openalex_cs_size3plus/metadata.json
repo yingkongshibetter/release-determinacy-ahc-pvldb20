@@ -1,0 +1,61 @@
+{
+  "dataset_name": "openalex_cs_size3plus",
+  "raw_data_sources": [
+    {
+      "name": "OpenAlex Works (CS-concept filter)",
+      "url": "https://api.openalex.org/works",
+      "filter": "concepts.id:C41008148, publication_year:2018-2024"
+    }
+  ],
+  "construction_date": "2026-05-06T04:48:30.327642+00:00",
+  "random_seed": 2026,
+  "node_count": 24286,
+  "hyperedge_count": 8219,
+  "volume": 44525,
+  "feature_dim": 2225,
+  "sensitive_attributes": [
+    "country",
+    "institution_type",
+    "career_stage"
+  ],
+  "label_source": "OpenAlex primary_topic.field.display_name",
+  "hyperedge_rule": "one hyperedge per OpenAlex CS work; members are its authors",
+  "filters": {
+    "concept_id": "C41008148",
+    "year_range": "2018-2024",
+    "min_size": 2,
+    "max_size": 25,
+    "min_author_works": 2,
+    "min_node_degree_closure": 2,
+    "feature_excludes_sensitive_attrs": true,
+    "feature_excludes_label": true,
+    "derived_from": "openalex_cs (the same pipeline before the size-3 cut)",
+    "derivation_rule": "keep hyperedges with size >= 3; drop resulting zero-degree nodes; remap node/hyperedge ids"
+  },
+  "min_hyperedge_size": 3,
+  "max_hyperedge_size": 25,
+  "removed_node_count": 64204,
+  "removed_hyperedge_count": 3212,
+  "file_sha256": {
+    "incidence.npz": "04413ef1c76e4a0e26efbb41be3c794c8c182c6b4f46f5d1c725045044bf118a",
+    "node_features.npz": "0227d3e0de885bcf38ea969e92b52744f5481133040fac1d9c63ca4c0425e610",
+    "sensitive_attrs.csv": "910420d5f5a362aa79cb4f69c11fc28fb807f6737383a09b79143f65a4635db0",
+    "labels.csv": "11feb64c2267987df6814e04937301987958400367c8c7900d0eb76f0c2a0037",
+    "node_mapping.csv": "e26ea3791975a98cc4ac476ac0d22d1541498e55becbe60eb0ec8d8141f253f3",
+    "hyperedge_mapping.csv": "21584e972f2d554398cb9fe93c4f7dd928fe19e13c68f2da96f1027620b6873c"
+  },
+  "code_version": null,
+  "known_limitations": [
+    "V = OpenAlex authors surviving filtering.",
+    "E = one hyperedge per work, containing the work's authors (after author-level filtering).",
+    "X = author x topic counts (OpenAlex topic IDs), L1 row-normalized.",
+    "Topic IDs are NOT field/subfield: they are the leaf-level topic IDs from work.topics[].",
+    "A.country = most frequent affiliation country across the author's works in this sample.",
+    "A.institution_type = most frequent affiliation type across the author's works.",
+    "A.career_stage = bucketed earliest observed publication year IN THIS SAMPLE; true first publication year is unknown, so this is an OBSERVED-CAREER-STAGE PROXY.",
+    "Y.dominant_label = most frequent OpenAlex field (level 1) across the author's works.",
+    "Hyperedges are real coauthor groups; KNN / label-based hyperedges are NOT used.",
+    "Country / institution_type / career_stage / author_id are NOT used as features.",
+    "Derived from `openalex_cs` by keeping hyperedges with size >= 3 and dropping resulting isolated nodes."
+  ]
+}
