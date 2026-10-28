@@ -1,0 +1,81 @@
+name: Import published source package
+
+on:
+  push:
+    paths:
+      - .github/workflows/import-source.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and import the published source
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import io
+          from pathlib import Path, PurePosixPath
+          import urllib.request
+          import zipfile
+
+          url = 'https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20/releases/download/pvldb20-submission/release-determinacy-ahc-pvldb20.zip'
+          expected = '4c7e3b9e64f5621c3324ab21219a40545e9e5432c32c72853e8f2314ac55baf0'
+          with urllib.request.urlopen(url) as response:
+              payload = response.read()
+          if hashlib.sha256(payload).hexdigest() != expected:
+              raise ValueError('The source package checksum does not match.')
+          prefix = 'release-determinacy-ahc/'
+          count = 0
+          with zipfile.ZipFile(io.BytesIO(payload)) as package:
+              for entry in package.infolist():
+                  if entry.is_dir():
+                      continue
+                  if not entry.filename.startswith(prefix):
+                      raise ValueError('Unexpected package prefix.')
+                  relative = PurePosixPath(entry.filename[len(prefix):])
+                  if relative.is_absolute() or '..' in relative.parts or '.git' in relative.parts:
+                      raise ValueError('Unsafe package path.')
+                  count += 1
+                  if str(relative) in {'README.md', 'LICENSE'}:
+                      continue
+                  target = Path(*relative.parts)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(package.read(entry))
+          if count != 475:
+              raise ValueError(f'Expected 475 package files; received {count}.')
+
+          readme = Path('README.md')
+          content = readme.read_text(encoding='utf-8')
+          start = content.index('## Download\n')
+          end = content.index('## Requirements\n', start)
+          content = content[:start] + '''## Download
+
+          Click **Code → Download ZIP** above to download the complete source code and bundled data, or clone this repository:
+
+          ```bash
+          git clone https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20.git
+          cd release-determinacy-ahc-pvldb20
+          ```
+
+          Run the following commands from the repository directory. The [submission snapshot](https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20/releases/tag/pvldb20-submission) is also available as a release package.
+
+          ''' + content[end:]
+          content = content.replace("- The complete implementation is in the attached release package. GitHub's **Code → Download ZIP** contains the repository documentation.\n", '')
+          content = content.replace('inside the package.', 'in this repository.')
+          readme.write_text(content, encoding='utf-8')
+          Path('.github/workflows/import-source.yml').unlink()
+          print(f'Imported all {count} package files, preserving the current README and license.')
+          PY
+      - name: Publish the source tree
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          git commit -m 'Publish complete source tree for direct download'
+          git push origin HEAD:main
