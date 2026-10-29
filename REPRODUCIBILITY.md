@@ -1,13 +1,14 @@
-# Release Determinacy for Fairness Certification in Attributed Hypergraph Clustering
+# Release Determinacy for Unit-Level Fairness Certification in Attributed Hypergraph Clustering
 
-This repository holds the code and data of the PVLDB paper *Release Determinacy for Fairness Certification
+This repository holds the code and data of the PVLDB paper *Release Determinacy for Unit-Level Fairness Certification
 in Attributed Hypergraph Clustering* (Xuemin Wang, Yuanjin Hao, Liang Chang). It audits partitions of
 attributed hypergraphs with hyperedge group preservation (HGP), the membership-weighted within-unit
 segregation of groups across clusters. It decides which releases (pairwise graphs, the random-walk release,
 incidence) determine HGP, computes the conservative certificates U_P, U_Q and U_Q,50 from a held release,
-and evaluates HGP exactly with one SQL query when a certificate leaves a budget open. From the 30 stored
-partitions and the data, the scripts regenerate every release, budget, audit, certificate and result of
-RQ1, RQ2 and Practicality. Every decision is made in exact rational arithmetic.
+and evaluates HGP exactly with one SQL query when a certificate leaves a budget open. The repository stores the 30 audited partitions, the processed OpenAlex hypergraphs, and the search
+witnesses behind Figure 3 and the same-group exchanges. With the raw data, the scripts regenerate every
+release, budget, audit, certificate, and count of RQ1, RQ2 and Practicality, verify every witness, and
+evaluate every decision in exact rational arithmetic, with outward rounding on floating-point releases.
 
 ## Requirements
 
@@ -154,7 +155,7 @@ Heavy items, not needed for the tables above:
 
 ```
 @misc{wang2026release,
-  title  = {Release Determinacy for Fairness Certification in Attributed Hypergraph Clustering},
+  title  = {Release Determinacy for Unit-Level Fairness Certification in Attributed Hypergraph Clustering},
   author = {Wang, Xuemin and Hao, Yuanjin and Chang, Liang},
   note   = {Submitted to Proceedings of the VLDB Endowment, Vol. 20},
   year   = {2026}
