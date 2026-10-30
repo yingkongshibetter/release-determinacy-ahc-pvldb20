@@ -1,14 +1,17 @@
-# Release Determinacy for Unit-Level Fairness Certification in Attributed Hypergraph Clustering
+# Release Determinacy for Hyperedge-Level Fairness Certification in Attributed Hypergraph Clustering
 
-This repository holds the code and data of the PVLDB paper *Release Determinacy for Unit-Level Fairness Certification
-in Attributed Hypergraph Clustering* (Xuemin Wang, Yuanjin Hao, Liang Chang). It audits partitions of
-attributed hypergraphs with hyperedge group preservation (HGP), the membership-weighted within-unit
+This repository holds the code and data of the PVLDB paper *Release Determinacy for Hyperedge-Level Fairness Certification
+in Attributed Hypergraph Clustering* (Xuemin Wang, Yuanjing Hao, Liang Chang). It audits partitions of
+attributed hypergraphs with hyperedge group preservation (HGP), the membership-weighted within-hyperedge
 segregation of groups across clusters. It decides which releases (pairwise graphs, the random-walk release,
 incidence) determine HGP, computes the conservative certificates U_P, U_Q and U_Q,50 from a held release,
 and evaluates HGP exactly with one SQL query when a certificate leaves a budget open. The repository stores the 30 audited partitions, the processed OpenAlex hypergraphs, and the search
 witnesses behind Figure 3 and the same-group exchanges. With the raw data, the scripts regenerate every
 release, budget, audit, certificate, and count of RQ1, RQ2 and Practicality, verify every witness, and
 evaluate every decision in exact rational arithmetic, with outward rounding on floating-point releases.
+
+The supplementary material of the submission, with the complete proofs and further results, is
+[`supplementary_material.pdf`](supplementary_material.pdf) in this repository.
 
 ## Requirements
 
@@ -47,7 +50,7 @@ The repository also stores
   scale-up hypergraph.
 - `data/witnesses/`: the outputs of the two searches of RQ1 that took hours, so that their counts can be
   checked in minutes. `declared/` holds the 260 compatible inputs of Figure 3 (L1 and L2, low and high, for
-  the 65 cells with overlapping units), stored as the units that differ from the data. `exchange/` holds the
+  the 65 cells with overlapping hyperedges), stored as the hyperedges that differ from the data. `exchange/` holds the
   75 sequences of same-group exchanges. `run_rq1.py` rebuilds and checks every witness in exact arithmetic;
   `run_search.py` reruns the searches.
 
@@ -82,7 +85,7 @@ its budgets, and `outputs/budgets.csv`. The other scripts read it and write the 
 
 | Paper item | Command | Output |
 |---|---|---|
-| Table 3 (nodes, units, memberships, K, 30% screen) | `run_rq1.py` | `table3.csv` |
+| Table 3 (nodes, hyperedges, memberships, K, 30% screen) | `run_rq1.py` | `table3.csv` |
 | Table 4 (auditors and budgets) | `run_cells.py` | `budgets.csv`, `budgets_partition.csv`, `cells.csv` |
 | Table 5 | `run_rq1.py` | `table5.csv` |
 | Table 6 (all five rows) | `run_rq1.py` | `table6.csv` |
@@ -155,14 +158,14 @@ Heavy items, not needed for the tables above:
 
 ```
 @misc{wang2026release,
-  title  = {Release Determinacy for Unit-Level Fairness Certification in Attributed Hypergraph Clustering},
-  author = {Wang, Xuemin and Hao, Yuanjin and Chang, Liang},
+  title  = {Release Determinacy for Hyperedge-Level Fairness Certification in Attributed Hypergraph Clustering},
+  author = {Wang, Xuemin and Hao, Yuanjing and Chang, Liang},
   note   = {Submitted to Proceedings of the VLDB Endowment, Vol. 20},
   year   = {2026}
 }
 ```
 
-Xuemin Wang, Yuanjin Hao and Liang Chang are with the Guilin University of Electronic Technology.
+Xuemin Wang, Yuanjing Hao and Liang Chang are with the Guilin University of Electronic Technology.
 
 ## License
 

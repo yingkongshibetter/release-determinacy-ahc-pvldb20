@@ -160,9 +160,10 @@ def main():
 
     # ---------------- Practicality: pairs that need no request
     pairs = cells.groupby(["dataset", "attribute"]).groups
-    noreq_B = sum(all(C.up[i] <= C.B[i] for i in idx) for idx in pairs.values())
+    # Algorithm 1: a determined cell (declared disjoint hyperedges) or a certified one needs no request.
+    noreq_B = sum(all(C.determined[i] or C.up[i] <= C.B[i] for i in idx) for idx in pairs.values())
     t6 = Fraction(3, 5)
-    noreq_t = sum(all(C.d_up[i] <= t6 for i in idx) for idx in pairs.values())
+    noreq_t = sum(all(C.determined[i] or C.d_up[i] <= t6 for i in idx) for idx in pairs.values())
     say("Practicality dataset-attribute pairs that need no request under B / under tau = 0.6",
         f"{noreq_B} / {noreq_t} of {len(pairs)}")
 

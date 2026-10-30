@@ -1,6 +1,8 @@
-# Release Determinacy for Unit-Level Fairness Certification in Attributed Hypergraph Clustering
+# Release Determinacy for Hyperedge-Level Fairness Certification in Attributed Hypergraph Clustering
 
-This repository provides the implementation of the paper **“Release Determinacy for Unit-Level Fairness Certification in Attributed Hypergraph Clustering”** by Xuemin Wang, Yuanjin Hao, and Liang Chang, submitted to PVLDB Vol. 20.
+This repository provides the implementation of the paper **“Release Determinacy for Hyperedge-Level Fairness Certification in Attributed Hypergraph Clustering”** by Xuemin Wang, Yuanjing Hao, and Liang Chang, submitted to PVLDB Vol. 20.
+
+The supplementary material, with the complete proofs and further results, is in [supplementary_material.pdf](supplementary_material.pdf).
 
 The repository includes the 30 audited partitions, processed OpenAlex hypergraphs, and search witnesses. Given the raw data, the scripts regenerate the releases, budgets, audits, certificates, and counts for RQ1, RQ2, and Practicality, verify the witnesses, and evaluate decisions in exact rational arithmetic, with outward rounding for floating-point releases.
 
