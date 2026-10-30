@@ -62,6 +62,9 @@ class Cells:
         self.B_rec = [F(x) for x in c.B_rec] if "B_rec" in c else [None] * len(c)
         self.B_pm = [F(x) for x in c.B_pm] if "B_pm" in c else None
         self.n = len(c)
+        # Algorithm 1, line 1: on a dataset whose hyperedges are declared disjoint, the components of the release are
+        # the hyperedges, so the release determines HGP and the cell is decided without a request.
+        self.determined = [d not in OVERLAP for d in c.dataset]
 
     def subset(self, mask):
         return Cells(self.df[np.asarray(mask)])
@@ -91,7 +94,7 @@ def row_counts(C: Cells, stat, budget, label):
         cert = sum(stat["U_P"][i] <= budget[i] for i in passes)
         out["UP_certifies"] = f"{cert} of {len(passes)}"
         out["UP_cert_n"] = cert
-        out["requests"] = sum(not (stat["U_P"][i] <= budget[i]) for i in range(C.n))
+        out["requests"] = sum(not C.determined[i] and not (stat["U_P"][i] <= budget[i]) for i in range(C.n))
     return out
 
 
@@ -148,7 +151,7 @@ def figure4(C: Cells):
             p = {i: C.dbar[i] <= t for i in idx}
             r = dict(dataset=ds, tau=float(t), cells=len(idx), failing=sum(not p[i] for i in idx),
                      certified_UP_over_Ibar=sum(p[i] and C.d_up[i] <= t for i in idx))
-            r["requests"] = sum(not (C.d_up[i] <= t) for i in idx)
+            r["requests"] = sum(not C.determined[i] and not (C.d_up[i] <= t) for i in idx)
             for k, s in (("dyadic", C.d_sur), ("normalized_clique", C.d_ncl), ("reconstruction", C.d_rec)):
                 ev = [i for i in idx if s[i] is not None]
                 r[f"{k}_misses"] = sum((not p[i]) and s[i] <= t for i in ev) if ev else None
