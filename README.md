@@ -15,7 +15,7 @@ git clone https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20.g
 cd release-determinacy-ahc-pvldb20
 ```
 
-Run the following commands from the repository directory. The [submission snapshot](https://github.com/yingkongshibetter/release-determinacy-ahc-pvldb20/releases/tag/pvldb20-submission) is also available as a release package.
+Run the following commands from the repository directory.
 
 ## Requirements
 
